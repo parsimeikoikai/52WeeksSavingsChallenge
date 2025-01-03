@@ -5,8 +5,8 @@ import nodemailer from 'nodemailer';
 
 // Initialize Supabase client
 const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!,
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_KEY!,
 );
 // Initialize Email Transporter
 const transporter = nodemailer.createTransport({
