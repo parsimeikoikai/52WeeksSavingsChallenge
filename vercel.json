@@ -11,7 +11,7 @@
     }
   ],
   "functions": {
-    "api/send-reminders/route.ts": {
+    "api/send-reminders.ts": {
       "runtime": "nodejs16.x",
       "schedule": "50 8 * * 4"
     }
