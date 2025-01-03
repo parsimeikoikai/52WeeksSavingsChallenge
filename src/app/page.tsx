@@ -71,12 +71,6 @@ export default function HomePage() {
             onSubmit={handleSubmit}
           >
             <div>
-              {/* <label
-      htmlFor="email"
-      className="block text-sm font-medium text-gray-700 mb-1"
-    >
-      Email Address
-    </label> */}
               <label
                 htmlFor='weeklyTarget'
                 className='block text-sm font-medium text-left mb-2'
@@ -130,8 +124,8 @@ export default function HomePage() {
             {error && <p className='text-red-500 text-sm'>{error}</p>}
             <button
               type='submit'
-              className='px-6 py-3 font-medium text-white bg-blue-600 rounded-lg
-            shadow hover:bg-blue-700 focus:ring-4 focus:ring-blue-400 focus:ring-opacity-50'
+              className={`px-6 py-3 font-medium text-white bg-blue-600 rounded-lg shadow focus:ring-4 focus:ring-blue-400 focus:ring-opacity-50 
+    ${!consent || loading ? 'bg-gray-400 text-gray-700 shadow-none cursor-not-allowed hover:bg-gray-400' : 'hover:bg-blue-700'}`}
               disabled={!consent || loading}
             >
               {loading ? 'Submitting...' : 'Submit'}
