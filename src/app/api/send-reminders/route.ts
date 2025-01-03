@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
-import { createTransport } from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 const supabase = createClient(
-  'https://waqrbekdrzjhfayngtod.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndhcXJiZWtkcnpqaGZheW5ndG9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU4MDc2OTMsImV4cCI6MjA1MTM4MzY5M30.VckHGYOuHWXJNoqsyPv7dLkJ0jbd08xIGpY02OzHfM8',
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_KEY!,
 );
 
-const transporter = createTransport({
+const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'koikai254@gmail.com',
-    pass: 'uxrn deno vclh vqus',
+    user: process.env.EMAIL_USER!,
+    pass: process.env.EMAIL_PASS!,
   },
 });
 
@@ -30,7 +31,7 @@ async function sendWeeklyReminder() {
     const newTarget = target_amount * current_week;
 
     const mailOptions = {
-      from: 'koikai254@gmail.com',
+      from: process.env.EMAIL_USER!,
       to: email,
       subject: `Your Weekly Savings Challenge - Week ${current_week}`,
       text: `Hi ${name},\n\nThis week’s savings goal is Ksh ${newTarget}. Keep saving!\n\nBest regards,\nThe 52 Weeks Savings Challenge Team`,
