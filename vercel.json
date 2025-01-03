@@ -9,10 +9,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "api/send-reminders/route.ts": {
-      "runtime": "nodejs16.x"
-    }
-  }
+  ]
 }
